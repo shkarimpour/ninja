@@ -105,7 +105,7 @@ class AESFastEncryptionEngine extends _Common implements BlockCipher {
     final int _rounds = KC +
         6; // This is not always true for the generalized Rijndael that allows larger block sizes
     final List<List<int>> _workingKey = List.generate(
-        _rounds + 1, (int i) => List<int>(4)); // 4 words in a block
+        _rounds + 1, (int i) => List<int>.filled(4, 0)); // 4 words in a block
 
     // Copy the key into the round key array.
     var keyView = ByteData.view(key.buffer, key.offsetInBytes, key.length);
@@ -268,7 +268,7 @@ class AESFastDecryptionEngine extends _Common implements BlockCipher {
     final int _rounds = KC +
         6; // This is not always true for the generalized Rijndael that allows larger block sizes
     final List<List<int>> _workingKey = List.generate(
-        _rounds + 1, (int i) => List<int>(4)); // 4 words in a block
+        _rounds + 1, (int i) => List<int>.filled(4, 0)); // 4 words in a block
 
     // Copy the key into the round key array.
     var keyView = ByteData.view(key.buffer, key.offsetInBytes, key.length);

@@ -5,9 +5,9 @@ import 'package:ninja/utils/big_int.dart';
 
 class RSADecryptionEngine {
   final RSAPrivateKey _key;
-  BigInt _dP;
-  BigInt _dQ;
-  BigInt _qInv;
+  late BigInt _dP;
+  late BigInt _dQ;
+  late BigInt _qInv;
 
   final int blockSize;
 

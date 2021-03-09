@@ -10,12 +10,12 @@ import 'package:ninja/utils/iterable.dart';
 class RsassaPkcs1v15Signer implements RsaSigner {
   final EmsaHasher hasher;
 
-  RsassaPkcs1v15Signer({EmsaHasher hasher})
+  RsassaPkcs1v15Signer({EmsaHasher? hasher})
       : hasher = hasher ?? EmsaHasher.sha256;
 
   List<int> sign(
       final RSAPrivateKey key, final /* String | List<int> | BigInt */ msg) {
-    List<int> msgBytes;
+    late List<int> msgBytes;
     if (msg is List<int>) {
       msgBytes = msg;
     } else if (msg is String) {
@@ -39,7 +39,7 @@ class RsassaPkcs1v15Signer implements RsaSigner {
 class RsassaPkcs1v15Verifier implements RsaVerifier {
   final EmsaHasher hasher;
 
-  RsassaPkcs1v15Verifier({EmsaHasher hasher})
+  RsassaPkcs1v15Verifier({EmsaHasher? hasher})
       : hasher = hasher ?? EmsaHasher.sha256;
 
   bool verify(RSAPublicKey key, /* String | List<int> | BigInt */ signature,
